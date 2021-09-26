@@ -1,0 +1,93 @@
+#Made By WaterWolf#5918 
+#Discord: WaterWolf#5918
+#Email: firewolf@null.net
+#Do Not Remove
+
+on join:
+    set join message to " "
+    wait 5 tick
+    broadcast "&r%colored player's display name% &eJoined the game."
+
+on chat:
+    cancel event
+    if {_chat} is 0:
+        broadcast "&r%coloured player's display name% >> &f%coloured message%"
+    else:
+        cancel event
+
+#         #make console execute command "/discordsrv broadcast ```&r%coloured player's display name% >> &f%coloured message%```"
+#         # May or may not keep
+
+
+# command /test2:
+#     permission: lavasmp.chat.toggle
+#     trigger:
+#         set {_chat} to
+
+# command /toggle <text>:
+#     permission: lavasmp.chat.toggle
+#     trigger:
+#         if arg-1 is "readallchat":
+#             if {%player%.chat.readall} is false:
+#                 set {%player%.chat.readall} to true
+#                 send "&8[&7Debug&8]&7 Set 'readall' to &a&otrue"
+#             else:
+#                 set {%player%.chat.readall} to false
+#                 send "&8[&7Debug&8]&7 Set 'readall' to &c&ofalse"
+#         else:
+#             send "Wrong thing :/"
+
+command /broadcast <text>:
+    permission: lavasmp.chat.broadcast
+    trigger:
+        
+        set {text.broadcast} to "&3[&cServer&3]&b %coloured arg-1%"
+        set {text.discord.broadcast} to "&3[&cServer&3]&b `%coloured arg-1%`"
+        broadcast {text.broadcast}
+        make console execute command "/discordsrv broadcast %{text.discord.broadcast}%"
+
+
+
+
+
+# on join:
+#     set join message to " "
+#     wait 5 tick
+#     broadcast "&r%colored player's display name% &eJoined the game."
+
+# on chat:
+#     loop all players:
+#         # send message
+#         if {%loop-player%.chat.readall} is true:
+#             send "&8[&7Debug&8]&7 Message:&r %colored message%"
+
+#     cancel event
+#     broadcast "&r%coloured player's display name% >> &f%coloured message%"
+#     make console execute command "/discordsrv broadcast ```&r%coloured player's display name% >> &f%coloured message%```"
+
+#     # May or may not keep
+
+
+# command /toggle <text>:
+#     permission: lavasmp.chat.toggle
+#     trigger:
+#         if arg-1 is "readallchat":
+#             if {%player%.chat.readall} is false:
+#                 set {%player%.chat.readall} to true
+#                 send "&8[&7Debug&8]&7 Set 'readall' to &a&otrue"
+#             else:
+#                 set {%player%.chat.readall} to false
+#                 send "&8[&7Debug&8]&7 Set 'readall' to &c&ofalse"
+#         else:
+#             send "Wrong thing :/"
+
+# command /broadcast <text>:
+#     permission: lavasmp.chat.broadcast
+#     trigger:
+        
+#         set {text.broadcast} to "&3[&cServer&3]&b %coloured arg-1%"
+#         set {text.discord.broadcast} to "&3[&cServer&3]&b `%coloured arg-1%`"
+#         broadcast {text.broadcast}
+#         make console execute command "/discordsrv broadcast %{text.discord.broadcast}%"
+
+

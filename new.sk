@@ -1,0 +1,116 @@
+#Made By WaterWolf#5918 
+#Discord: WaterWolf#5918
+#Email: firewolf@null.net
+#Do Not Remove
+
+
+
+
+
+# on leftclick with a written book:
+#     if name of item is "&eEnchant Book":
+#         open chest with 2 row named "&cEnchant Gui | Enchant = " to player
+#         wait 1 tick
+#         format slot 9 of player with Name Tag named "&cTo Use Book Put The Item You Want To Enchant In Your HotBar And Click The Buuton For That Slot"  to close
+#         format slot 0 of player with black stained glass named "hotbar slot 1" to close then run [set player's selected hotbar slot to slot 0 of player] -> [set lore of player's tool to "&7Lava Walker"] -> [remove written book named "&eEnchant book" from player's inventory]
+#         format slot 1 of player with black stained glass named "hotbar slot 2" to close then run [set player's selected hotbar slot to slot 1 of player] -> [set lore of player's tool to "&7Lava Walker"] -> [remove written book named "&eEnchant book" from player's inventory]
+#         format slot 2 of player with black stained glass named "hotbar slot 3" to close then run [set player's selected hotbar slot to slot 2 of player] -> [set lore of player's tool to "&7Lava Walker"] -> [remove written book named "&eEnchant book" from player's inventory]
+#         format slot 3 of player with black stained glass named "hotbar slot 4" to close then run [set player's selected hotbar slot to slot 3 of player] -> [set lore of player's tool to "&7Lava Walker"] -> [remove written book named "&eEnchant book" from player's inventory]
+#         format slot 4 of player with black stained glass named "hotbar slot 5" to close then run [set player's selected hotbar slot to slot 4 of player] -> [set lore of player's tool to "&7Lava Walker"] -> [remove written book named "&eEnchant book" from player's inventory]
+#         format slot 5 of player with black stained glass named "hotbar slot 6" to close then run [set player's selected hotbar slot to slot 5 of player] -> [set lore of player's tool to "&7Lava Walker"] -> [remove written book named "&eEnchant book" from player's inventory]
+#         format slot 6 of player with black stained glass named "hotbar slot 7" to close then run [set player's selected hotbar slot to slot 6 of player] -> [set lore of player's tool to "&7Lava Walker"] -> [remove written book named "&eEnchant book" from player's inventory]
+#         format slot 7 of player with black stained glass named "hotbar slot 8" to close then run [set player's selected hotbar slot to slot 7 of player] -> [set lore of player's tool to "&7Lava Walker"] -> [remove written book named "&eEnchant book" from player's inventory]
+#         format slot 8 of player with black stained glass named "hotbar slot 9" to close then run [set player's selected hotbar slot to slot 8 of player] -> [set lore of player's tool to "&7Lava Walker"] -> [remove written book named "&eEnchant book" from player's inventory]
+command /enchant:
+    trigger:
+        player's level is higher or equal to 30:
+            if player's tool is sword:
+                loop 30 times:
+                    set {_number} to a random integer between 1 and 2
+            if {_number} is 1:
+                send "&3Ice Aspect"
+            if {_number} is 2:
+                send "&3Ice Aspect"
+            clear {_number}
+
+            if player's tool is pickaxe:
+                loop 30 times:
+                    set {_number} to a random integer between 1 and 2
+            if {_number} is 1:
+                send "1"
+            if {_number} is 2:
+                send "2"
+            clear {_number}
+
+            if player's tool is boots:
+                loop 30 times:
+                    set {_number} to a random integer between 1 and 6
+            if {_number} is 1:
+                send "&3Ice Speed"
+            if {_number} is 2:
+                send "&3Ice Speed"
+            if {_number} is 3:
+                send "&3Ice Speed II"
+            if {_number} is 4:
+                send "&3Ice Speed"
+            if {_number} is 5:
+                send "&3Ice Speed III"
+            if {_number} is 6:
+                send "&3Lava Walker"
+            clear {_number}
+
+            if player's tool is helmet:
+                loop 30 times:
+                    set {_number} to a random integer between 1 and 2
+            if {_number} is 1:
+                send "1"
+            if {_number} is 2:
+                send "2"
+            clear {_number}
+
+            if player's tool is bow:
+                loop 30 times:
+                    set {_number} to a random integer between 1 and 2
+            if {_number} is 1:
+                send "&3Tnt Arrows"
+            if {_number} is 2:
+                send "&3MultiArrow"
+            clear {_number}
+
+        else:
+            send "&7[&5Enchant&7] &cYou Need Atlest 30 levels"
+            stop
+
+command /testenchant:
+    trigger:
+        loop 10 times:
+            make player execute command "enchant"
+            
+
+on rightclick with iron nugget:
+    if {%player%.has_fly} is 0:
+        send "&c[!] This Item Can't Be Used With Out JetBoots Or a Jetpack [!]"
+        remove iron nugget named "&4Fly Up" from player's inventory
+    if player is wearing a chainmail chestplate named "Gold Jetpack":
+        if name of tool of player is "&4Fly Up":
+            player's level is higher or equal to 1
+            push player upwards at speed 0.4
+            push player forward at speed 0.09
+            remove 0.5 from player's level
+
+
+
+on armor change:
+    if player is not wearing chainmail chestplate named "Gold Jetpack":
+        remove iron nugget named "&4Fly Up" from player's inventory
+        set {%player%.has_fly} to 0
+    if player is wearing a chainmail chestplate named "Gold Jetpack":
+        give player iron nugget named "&4Fly Up"
+        set {%player%.has_fly} to 1
+
+
+
+
+
+
+

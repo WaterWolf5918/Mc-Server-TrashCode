@@ -1,0 +1,105 @@
+#Made By WaterWolf#5918 
+#Discord: WaterWolf#5918
+#Email: firewolf@null.net
+#Do Not Remove
+
+on skript start:
+    set {ver} to 1.6
+
+on join:
+    if name of player is "Mni8":
+        chance of 95%:
+            wait 5 ticks
+            kick the player due to "Timed Out"
+    wait 5 ticks
+    send "&2Welcome To Placeholder "
+    if {%player%.startitems} is not set:
+        wait 20 ticks
+        execute command "/give %player% stone_sword 1"
+        wait 2 ticks
+        execute command "/give %player% stone_shovel 1"
+        wait 2 ticks
+        execute command "/give %player% stone_pickaxe 1"
+        wait 2 ticks
+        execute command "/give %player% stone_axe 1"
+        wait 2 ticks
+        execute command "/give %player% leather_helmet 1"
+        wait 2 ticks
+        execute command "/give %player% leather_chestplate 1"
+        wait 2 ticks
+        execute command "/give %player% leather_leggings 1"
+        wait 2 ticks
+        execute command "/give %player% leather_boots 1"    
+        wait 2 ticks
+        execute command "/give %player% apple 16"
+        set {%player%.startitems} to 1
+
+    if {%player%.chat.readall} is not set:
+        set {%player%.chat.readall} to false
+
+
+
+
+# command /plugins:
+#     aliases: /pl, /bukkit:plugins, /bukkit:pl
+#     trigger:
+#         send "  &6 Custom Plugins {2}"
+#         send " "
+#         send "  &6 Plugins {20}"
+#         send "  &2CrackShot  Craftory  CustomCrafting  DiscordSRV"
+#         send "  &2dynmap  Essentials  ItemEdit  LuckPerms"
+#         send "  &2NoCheatPlus  PlaceholderAPI  Sk-NBeeT  SkQuery"
+#         send "  &2Skript  Tab-Reborn  Terra  Vault"
+#         send "  &2WolfyUtilities  WorldEdit  WorldGuard ProtocolLib"
+
+
+command /lightning:
+    trigger:
+        loop 20 times:
+            wait 1 ticks
+            strike lightning effect at location of player
+
+# command /discord:
+#     trigger:
+#         send "Placeholder"
+
+command /web:
+    aliases: /website, /websites
+    trigger:
+        send "Maybe Coming soon"
+        #send "<sgt:/spawn><link:https://bit.ly/NightSmp1>&x&1&2&5&6&f&b[&x&1&c&6&0&f&bM&x&2&6&6&b&f&be&x&3&1&7&5&f&bl&x&3&b&8&0&f&bi&x&4&5&8&a&f&bd&x&5&0&9&5&f&bo&x&5&a&9&f&f&cx &x&6&f&b&4&f&cM&x&7&9&b&e&f&co&x&8&3&c&9&f&cd&x&8&e&d&3&f&cd&x&9&8&d&e&f&ce&x&a&2&e&8&f&cd&x&a&d&f&3&f&d] Click Here " to player
+
+
+on command "/rules":
+    cancel event
+    send "Placeholder Rules"
+    send "[1]&2 Be Respectful To Other Players"
+    send "[2]&2 No Hacking"
+    send "[3]&2 Greifing Is Allowed &6 Just Make Sure They Don't Rage"
+    send "[4]&2 No Bulling"
+    send "[5]&2 No Discrimination &6 We All Respect Other Players"
+
+on server list ping:
+    set the motd to "&2placeholder"
+    set the fake max players count to -100
+    set the protocol version to 0
+    set the version string to "&2Minecraft Version | &6%minecraft version% &2|" 
+    clear the hover list
+    add "&6Minecraft Version | &2%minecraft version% &6|" to the hover list
+    add "&6Bukkit Version | &2%bukkit version% &6| " to the hover list
+
+# The 'f3' menu but in command form
+command /f3:
+    trigger:
+        send "&c=== &6F3 Menu&6 &c==="
+        send "&6TPS from 1m 5m 15m ago: &2%tps%"
+        send "&6Ping: &2%ping of player%"
+        send "&6World Name: &2%World%"
+        send "&6World Seed: &2%seed of player's world%"
+        send "&6Held Item: &2%player's tool%"
+        send "&6Targeted Block: &2%targeted block%"
+        send "&6Coordinates: &2%location of player%"
+        send "&6Server Local Time And Date: &2%now%"
+        send "&6Time Played: &2%time played of player%"
+        send "&6Time In Minecraft: &2%time%"
+

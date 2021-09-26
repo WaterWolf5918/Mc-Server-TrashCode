@@ -1,0 +1,297 @@
+#Made By WaterWolf#5918 
+#Discord: WaterWolf#5918
+#Email: firewolf@null.net
+#Do Not Remove
+
+
+
+on load:
+    set {%player%.vl} to 0
+    set {%player%.vl-low} to 0
+    set {prefix} to "&9[&4Mod.Sk&9]&r"
+
+
+on join:
+    if {notjoin} is true:
+        player has permission "mod.staff.main":
+            stop
+        else:
+            kick the player due to "&5The Server Is Under Maintenance%nl%&7%nl%&5Reason &8» &7%{_arg2}% %nl%&7%nl%&5For More info%nl%&5Website &8» &7Coming Soon%nl%&5Email &8» &7firewolf@null.net"
+    else:
+        stop
+
+
+command /maintenance <text> <text>:
+    aliases: /ban
+    permission: WaterWolf#5918.ModSk.maintenance
+    trigger:
+        set {_arg2} to arg-2
+        if arg-1 is "on":
+            broadcast "%{prefix}%&c maintenance mode is now on"
+            make console execute command "/kickall"
+            set {notjoin} to true
+        if arg-1 is "off":
+            broadcast "%{prefix}%&c maintenance mode is now off"
+            set {notjoin} to false
+
+
+
+
+
+command /Freeze [<player>]:
+    permission: lavasmp.staff.freeze
+    trigger:
+        if arg-1 is not set:
+            send "/Freeze <player>"
+        if arg-1 is set:
+            set {%arg-1%.freeze} to 1
+            send "&cYou Have Been /Freezed! By %player%" to arg-1
+
+command /Unfreeze [<player>]:
+    permission: lavasmp.staff.unfreeze
+    trigger:
+        if arg-1 is not set:
+            send "/Unfreeze <player>"
+        if arg-1 is set:
+            set {%arg-1%.freeze} to 0
+            send "&cYou Have Been /Unfreezed! By %player%" to arg-1
+
+
+command /clearchat:
+    permission: nightsmp.mod.clearchat
+    aliases: /cc, /chatclear, /clearchat, /cls
+    trigger:
+        loop 500 times:
+            send " "
+        send "Placeholder"
+
+
+
+command /ban [<offline player>] [<text>]:
+    aliases: /ban
+    permission: WaterWolf#5918.ModSk.ban
+    trigger:
+        if arg-1 is not set:
+            send "&c[ModSk]&3/ban [player]"
+        if arg-1 is set:
+            set {_arg} to "%arg-1%"
+            set {_player12} to "%player%"
+            create a gui with virtual chest inventory with 3 rows named "! Ban GUI ! %arg-1% " and shape "xxxxxxxxx", "123456789", and "xxxxxxxxx":
+                make gui slot "x" with black stained glass pane named " "
+                make gui slot "1" with water bucket named "&cNo Fall" with lore "&21 Day Ban":
+            
+                    create a gui with virtual chest inventory with 3 rows named "NoFall" and shape "xxxxxxxxx", "123456781", and "xxxxxxxxx":
+                        make gui slot "x" with black stained glass pane named " ":
+                            send ""
+                        make gui slot "4" with green wool named "{1} 7 Day Ban":
+                            make console execute command "/tempban %{_arg}% 7d NoFall"
+                            broadcast "%{prefix}%&c %{_arg}% Was Banned For Nofall By %{_player12}%"
+                            
+                        make gui slot "5" with orange wool named "{2} 15 Day Ban":
+                            make console execute command "/tempban %{_arg}% 15d NoFall"
+                            broadcast "%{prefix}%&c %{_arg}% Was Banned For Nofall By %{_player12}%"
+                            
+                        make gui slot "6" with red wool named "{3} 30 Day Ban":
+                            make console execute command "/tempban %{_arg}% 30d NoFall"
+                            broadcast "%{prefix}%&c %{_arg}% Was Banned For Nofall By %{_player12}%"
+                            
+                        make gui slot "1" with redstone block named "Perm Ban":
+                            make console execute command "/tempban %{_arg}% 5918d NoFall"
+                            broadcast "%{prefix}%&c %{_arg}% Was Banned For Nofall By %{_player12}%"
+                            
+                    open the last gui for the player
+
+                make gui slot "2" with diamond ore named "&cXray" with lore "&21 Day Ban":
+                    make gui slot "x" with black stained glass pane named " ":
+                        send ""
+                    make gui slot "4" with green wool named "{1} 7 Day Ban":
+                        make console execute command "/tempban %{_arg}% 7d Xray"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For Xray By %{_player12}%"
+                        
+                    make gui slot "5" with orange wool named "{2} 15 Day Ban":
+                        make console execute command "/tempban %{_arg}% 15d Xray"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For Xray By %{_player12}%"
+                        
+                    make gui slot "6" with red wool named "{3} 30 Day Ban":
+                        make console execute command "/tempban %{_arg}% 30d Xray"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For Xray By %{_player12}%"
+                        
+                    make gui slot "1" with redstone block named "Perm Ban":
+                        make console execute command "/tempban %{_arg}% 5918d Xray"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For Xray By %{_player12}%"
+                        
+                    open the last gui for the player     
+
+                make gui slot "3" with sugar named "&cSpeed Hacks" with lore "&22 Day Ban":
+                    make gui slot "x" with black stained glass pane named " ":
+                        send ""
+                    make gui slot "4" with green wool named "{1} 7 Day Ban":
+                        make console execute command "/tempban %{_arg}% 7d Speed Hacks"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For Speed Hacks By %{_player12}%"
+                        
+                    make gui slot "5" with orange wool named "{2} 15 Day Ban":
+                        make console execute command "/tempban %{_arg}% 15d Speed Hacks"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For Speed Hacks By %{_player12}%"
+                        
+                    make gui slot "6" with red wool named "{3} 30 Day Ban":
+                        make console execute command "/tempban %{_arg}% 30d Speed Hacks"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For Speed Hacks By %{_player12}%"
+                        
+                    make gui slot "1" with redstone block named "Perm Ban":
+                        make console execute command "/tempban %{_arg}% 5918d Speed Hacks"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For Speed Hacks By %{_player12}%"
+                        
+                    open the last gui for the player
+
+                make gui slot "4" with elytra named "&cFly Hacks" with lore "&22 Day Ban":
+                    make gui slot "x" with black stained glass pane named " ":
+                        send ""
+                    make gui slot "4" with green wool named "{1} 7 Day Ban":
+                        make console execute command "/tempban %{_arg}% 7d Fly"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For Nofall By %{_player12}%"
+                        
+                    make gui slot "5" with orange wool named "{2} 15 Day Ban":
+                        make console execute command "/tempban %{_arg}% 15d Fly"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For Fly By %{_player12}%"
+                        
+                    make gui slot "6" with red wool named "{3} 30 Day Ban":
+                        make console execute command "/tempban %{_arg}% 30d Fly"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For Fly By %{_player12}%"
+                        
+                    make gui slot "1" with redstone block named "Perm Ban":
+                        make console execute command "/tempban %{_arg}% 5918d Fly"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For Fly By %{_player12}%"
+                        
+                    open the last gui for the player 
+
+                make gui slot "5" with gold hoe named "&cBan Evasion" with lore "&230 Day Ban":
+                    make gui slot "x" with black stained glass pane named " ":
+                        send ""
+                    make gui slot "4" with green wool named "{1} 7 Day Ban":
+                        make console execute command "/tempban %{_arg}% 7d Ban Evasion"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For Ban Evasion By %{_player12}%"
+                        
+                    make gui slot "5" with orange wool named "{2} 15 Day Ban":
+                        make console execute command "/tempban %{_arg}% 15d Ban Evasion"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For Ban Evasion By %{_player12}%"
+                        
+                    make gui slot "6" with red wool named "{3} 30 Day Ban":
+                        make console execute command "/tempban %{_arg}% 30d Ban Evasion"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For Ban Evasion By %{_player12}%"
+                        
+                    make gui slot "1" with redstone block named "Perm Ban":
+                        make console execute command "/tempban %{_arg}% 5918d Ban Evasion"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For Ban Evasion By %{_player12}%"
+                        
+                    open the last gui for the player  
+
+                make gui slot "6" with soul sand named "&cNo Slowdown" with lore "&22 Day Ban":
+                    make gui slot "x" with black stained glass pane named " ":
+                        send ""
+                    make gui slot "4" with green wool named "{1} 7 Day Ban":
+                        make console execute command "/tempban %{_arg}% 7d No Slowdown"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For No Slowdown By %{_player12}%"
+                        
+                    make gui slot "5" with orange wool named "{2} 15 Day Ban":
+                        make console execute command "/tempban %{_arg}% 15d No Slowdown"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For No Slowdown By %{_player12}%"
+                        
+                    make gui slot "6" with red wool named "{3} 30 Day Ban":
+                        make console execute command "/tempban %{_arg}% 30d No Slowdown"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For No Slowdown By %{_player12}%"
+                        
+                    make gui slot "1" with redstone block named "Perm Ban":
+                        make console execute command "/tempban %{_arg}% 5918d No Slowdown"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For No Slowdown By %{_player12}%"
+                        
+                    open the last gui for the player
+
+                make gui slot "7" with wooden sword named "&cKillauro" with lore "&215 Day Ban":
+                    make gui slot "x" with black stained glass pane named " ":
+                        send ""
+                    make gui slot "4" with green wool named "{1} 7 Day Ban":
+                        make console execute command "/tempban %{_arg}% 7d Killauro"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For Killauro By %{_player12}%"
+                        
+                    make gui slot "5" with orange wool named "{2} 15 Day Ban":
+                        make console execute command "/tempban %{_arg}% 15d Killauro"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For Killauro By %{_player12}%"
+                        
+                    make gui slot "6" with red wool named "{3} 30 Day Ban":
+                        make console execute command "/tempban %{_arg}% 30d Killauro"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For Killauro By %{_player12}%"
+                        
+                    make gui slot "1" with redstone block named "Perm Ban":
+                        make console execute command "/tempban %{_arg}% 5918d Killauro"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For Killauro By %{_player12}%"
+                        
+                    open the last gui for the player
+
+                make gui slot "8" with slime ball named "&cAnit Knockback" with lore "&27 Day Ban":
+                    make gui slot "x" with black stained glass pane named " ":
+                        send ""
+                    make gui slot "4" with green wool named "{1} 7 Day Ban":
+                        make console execute command "/tempban %{_arg}% 7d Anit Knockback"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For Anit Knockback By %{_player12}%"
+                        
+                    make gui slot "5" with orange wool named "{2} 15 Day Ban":
+                        make console execute command "/tempban %{_arg}% 15d Anit Knockback"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For Anit Knockback By %{_player12}%"
+                        
+                    make gui slot "6" with red wool named "{3} 30 Day Ban":
+                        make console execute command "/tempban %{_arg}% 30d Anit Knockback"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For Anit Knockback By %{_player12}%"
+                        
+                    make gui slot "1" with redstone block named "Perm Ban":
+                        make console execute command "/tempban %{_arg}% 5918d Anit Knockback"
+                        broadcast "%{prefix}%&c %{_arg}% Was Banned For Anit Knockback By %{_player12}%"
+                        
+                    open the last gui for the player   
+
+                make gui slot "9" with red wool named "Other":
+                    open the last gui for the player                    
+
+
+
+
+            open the last gui for the player
+
+
+on any movement:
+    if {%player%.freeze} is 1:
+        cancel event
+
+on combust:
+    if event-entity is a player:
+        if {%player%.fireproof} is 1:
+            extinguish the player
+            apply potion of fire resistance 1 without particles to player for 1 ticks
+
+
+on kick:
+    loop 20 times:
+        wait 1 ticks
+        strike lightning effect at location of player
+
+# on any movement:
+#     loop 20 times:
+#         wait 1 ticks
+#         strike lightning effect at location of player
+
+
+every 40 ticks:
+    loop all players:
+        if {_vl-low} >= 5:
+            make console execute "kick %loop-player% spam"
+
+on chat:
+    if message contains "ggmaster" or "Kms" or "Kys" or "Cunt" or "Sex" or "Faggot" or "Nigga" or "Nigger" or "Pussy" or "Shit" or "Fuck" or "kms" or "kys" or "cunt" or "sex" or "faggot" or "nigga" or "nigger" or "pussy" or "shit" or "fuck":
+        cancel event
+        send "%{prefix}%&c You Can't Say That" to player
+        send "%{prefix}%&c Player &r<&4%player%&r>&c Was Warned For Message &r<&4%colored message%&r>" to console
+        add 1 to {_vl-low}
+    else:
+        broadcast "%colored player's display name% >> %colored message%"
+
+
+

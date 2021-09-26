@@ -1,0 +1,136 @@
+#Made By WaterWolf#5918 
+#Discord: WaterWolf#5918
+#Email: firewolf@null.net
+#Do Not Remove
+
+on damage:
+    if "%lore of attacker's tool%" contains "&3Ice Aspect":
+        make console execute command "/effect give %victim% minecraft:slowness 15 2 true"
+        chance of 5%:
+            set {%victim%.freeze} to 1
+            send "&cYou Have Been Frozen!" to victim
+            wait 80 ticks
+            set {%victim%.freeze} to 0
+            send "&c You Are No Longer Frozen" to victim
+
+on any movement:
+    if "%lore of player's boots%" contains "&3Lava Walker":
+        loop all blocks in radius 1.5 around player:
+            if loop-block is lava[level=0]:
+                set {%player%.fireproof} to 1
+                set loop-block to Smooth Basalt
+                wait 100 ticks
+                set loop-block to lava[level=0]
+                loop 30 times:
+                    wait 20 ticks
+                    if event-block is Smooth Basalt:
+                        set event-block to lava[level=0]
+                wait 20 ticks
+                set {%player%.fireproof} to 0
+                stop
+
+    if "%lore of player's boots%" contains "&3Ice Speed":
+        if block below player is ice:
+            if player has speed:
+                stop
+            else:
+                make console execute command "/effect give %player% minecraft:speed 5 0 true"
+                stop
+        if block below player is packed ice:
+            if player has speed:
+                stop
+            else:
+                make console execute command "/effect give %player% minecraft:speed 5 1 true"
+                stop
+        if block below player is blue ice:
+            if player has speed:
+                stop
+            else:
+                make console execute command "/effect give %player% minecraft:speed 5 2 true"
+                stop   
+           
+    if "%lore of player's boots%" contains "&3Ice Speed II":
+        if block below player is ice:
+            if player has speed:
+                stop
+            else:
+                make console execute command "/effect give %player% minecraft:speed 5 1 true"
+                stop
+        if block below player is packed ice:
+            if player has speed:
+                stop
+            else:
+                make console execute command "/effect give %player% minecraft:speed 5 2 true"
+                stop
+        if block below player is blue ice:
+            if player has speed:
+                stop
+            else:
+                make console execute command "/effect give %player% minecraft:speed 5 3 true"
+                stop             
+
+    if "%lore of player's boots%" contains "&3Ice Speed III":
+        if block below player is ice:
+            if player has speed:
+                stop
+            else:
+                make console execute command "/effect give %player% minecraft:speed 5 2 true"
+                stop
+        if block below player is packed ice:
+            if player has speed:
+                stop
+            else:
+                make console execute command "/effect give %player% minecraft:speed 5 6 true"
+                stop
+        if block below player is blue ice:
+            if player has speed:
+                stop
+            else:
+                make console execute command "/effect give %player% minecraft:speed 5 5 true"
+                stop
+
+       
+on shoot:
+    if name of tool of shooter contains "&cBoom Bow":
+        cancel event
+        play sound "ITEM_CROSSBOW_SHOOT" with volume 0.5 and pitch 1.5 to the shooter
+        set {_arrow} to spawned entity
+        shooter is a player:
+            wait 5 ticks
+            loop 10 times:
+                spawn tnt at event-projectile
+                set {_tnt} to spawned entity
+                wait 2 ticks
+                push {_tnt} in direction of shooter at speed 2
+
+on shoot:
+    if "%lore of shooter's tool%" contains "&3MultiArrow":
+        play sound "ITEM_CROSSBOW_SHOOT" with volume 0.5 and pitch 1.5 to the shooter
+        set {_arrow} to spawned entity
+        shooter is a player:
+            wait 2 ticks
+            loop 1 times:
+                wait 1 tick
+                spawn arrow right of event-projectile
+                set {_ent} to spawned entity
+                push {_ent} in direction of shooter at force 2.7
+                spawn arrow at event-projectile
+                set {_ent} to spawned entity
+                push {_ent} in direction of shooter at force 2.7
+                spawn arrow left of event-projectile
+                set {_ent} to spawned entity
+                push {_ent} in direction of shooter at force 2.7
+
+                    
+# on projectile hit:
+#     loop 20 times:
+#         strike lightning effect at projectile
+
+on armor change:
+    if "%lore of player's helmet%" contains "&3Night Vision":
+        if player has night vision:
+            stop
+        else:
+            make console execute command "/effect give %player% minecraft:night_vision 100000 1 true"
+    else:
+        make console execute command "/effect clear %player% minecraft:night_vision"
